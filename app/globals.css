@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07111f;
+  --foreground: #f8f5ef;
+  --surface-dark: #111827;
+  --surface-dark-2: #0f172a;
+  --gold: #c9a227;
+  --emerald: #0f766e;
+  --emerald-light: #5eead4;
+  --ivory: #f8f5ef;
+  --beige: #e8dcc8;
+  --mist: #94a3b8;
+  --heading-dark: #1f2937;
+  --font-sans: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-dark-2: var(--surface-dark-2);
+  --color-gold: var(--gold);
+  --color-emerald: var(--emerald);
+  --color-emerald-light: var(--emerald-light);
+  --color-ivory: var(--ivory);
+  --color-beige: var(--beige);
+  --color-mist: var(--mist);
+  --color-heading-dark: var(--heading-dark);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  border-color: rgba(148, 163, 184, 0.16);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: rgba(201, 162, 39, 0.35);
+  color: var(--ivory);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    outline-color: rgba(201, 162, 39, 0.65);
+  }
+}
+
+@layer components {
+  .section-gap {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .hero-panel {
+    @apply relative border border-white/10 bg-[linear-gradient(135deg,rgba(17,24,39,0.96),rgba(8,20,35,0.92))] shadow-[0_24px_80px_rgba(2,6,23,0.45)];
+  }
+
+  .dark-card {
+    @apply rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_50px_rgba(2,6,23,0.24)] backdrop-blur;
+  }
+
+  .light-card {
+    @apply rounded-[28px] border border-[#d5c8b4]/60 bg-ivory text-heading-dark shadow-[0_18px_45px_rgba(15,23,42,0.08)];
+  }
+
+  .soft-pattern {
+    background-image: url("/patterns/islamic-geometry.svg");
+    background-size: 180px;
+    background-position: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
